@@ -40,5 +40,20 @@ describe 'Usuário registra novo galpao' do
     expect(page).to have_content('Rio de Janeiro')
     expect(page).to have_content('RIO')
     expect(page).to have_content('40000 m2')
+    expect(page).to have_content('Galpão cadastrado com sucesso')
+  end
+
+  it 'sem dados obrigatórios' do
+    #Arrange
+    
+    #Act
+    visit root_path
+    click_on 'Cadastrar galpão'
+    fill_in 'Nome', with: 'Rio de Janeiro'
+    click_on 'Enviar'
+    visit root_path
+    #Assert
+    expect(page).not_to have_content('Rio de Janeiro')
+
   end
 end

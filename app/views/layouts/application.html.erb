@@ -12,7 +12,12 @@
   <body>
     <header>
       <h1 class="header"> Sistema de Galpões & Estoque </h1>
+      
     </header>
+    <nav>
+          <%= link_to 'Home', root_path, class: "botao" %>
+          <%= link_to 'Novo Galpão', new_warehouse_path, class: "botao" %>
+    </nav>
     <main>
       <%= yield %>
     </main>

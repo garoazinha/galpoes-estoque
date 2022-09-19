@@ -10,7 +10,13 @@ class WarehousesController < ApplicationController
                                                             :address, :cep, :area,
                                                             :useful_area, :description)
         w = Warehouse.new(warehouse_params)
-        w.save()
-        redirect_to root_path
+        if w.valid?
+            w.save()
+            flash[:notice] = "Galpão cadastrado com sucesso"
+            redirect_to root_path
+        else
+            flash[:alert] = 'Dados em falta'
+            render :new
+        end
     end
 end
