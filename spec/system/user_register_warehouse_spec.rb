@@ -43,17 +43,18 @@ describe 'Usuário registra novo galpao' do
     expect(page).to have_content('Galpão cadastrado com sucesso')
   end
 
-  it 'sem dados obrigatórios' do
+  it 'com dados incompletos' do
     #Arrange
     
     #Act
     visit root_path
     click_on 'Cadastrar galpão'
-    fill_in 'Nome', with: 'Rio de Janeiro'
+    fill_in 'Nome', with: ''
+    fill_in 'Descrição', with: ''
     click_on 'Enviar'
-    visit root_path
+    
     #Assert
-    expect(page).not_to have_content('Rio de Janeiro')
+    expect(page).to have_content('Galpão não cadastrado')
 
   end
 end
