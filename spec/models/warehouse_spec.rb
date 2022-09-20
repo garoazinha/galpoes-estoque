@@ -112,20 +112,26 @@ RSpec.describe Warehouse, type: :model do
         expect(result).to eq(false)
 
       end
-    end
-    context 'for zipcode length and format' do
-      it 'false when length not 9' do
+      it 'false when name is in use' do
         #Arrange
-        warehouse= Warehouse.new(name:'Goiasnia', code: 'GOC', city: 'Goiania', state: 'GO',
-                                  cep: '65400-00', address: 'Rua do Machado, 44',
-                                  area: 30000, useful_area: 25000,
-                                  description: 'Insumos industriais')
-
+        first_warehouse = Warehouse.create(name:'Goiasnia', code: 'GOC', city: 'Goiania', state: 'GO',
+                                          cep: '65400-000', address: 'Rua do Machado, 44',
+                                          area: 30000, useful_area: 25000,
+                                          description: 'Insumos industriais')
+                                        
+        second_warehouse = Warehouse.new(name:'Goiasnia', code: 'GEC', city: 'Anapolis', state: 'GO',
+                                         cep: '66400-000', address: 'Rua do Martelo, 45',
+                                         area: 40000, useful_area: 35000,
+                                         description: 'Insumos agrícolas')
         #Act
-        result = warehouse.valid?
+        result = second_warehouse.valid?
         #Assert
-        expect(result).to be_falsy
+        expect(result).to eq(false)
+
       end
+    end
+    context 'for zipcode format' do
+      
       it 'false when format not 00000-000' do
         #Arrange
         warehouse= Warehouse.new(name:'Goiasnia', code: 'GOC', city: 'Goiania', state: 'GO',

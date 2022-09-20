@@ -1,10 +1,12 @@
 <h2> Novo Galpão </h2>
 <% if @warehouse.errors.any? %>
-  <% @warehouse.errors.each do |erro| %>
-    <div>
-    <%= erro.full_message %>
-    </div>
-  <% end %>
+  <ul>
+    <% @warehouse.errors.full_messages.each do |msg| %>
+      <li>
+      <%= msg %>
+      </li>
+    <% end %>
+  </ul>
 <% end %>
 <%= form_with(model: @warehouse) do |f| %>
   <div>

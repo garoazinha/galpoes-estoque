@@ -14,11 +14,11 @@ describe 'Usuario visita tela inicial' do
     it 'e vê os galpões cadastrados' do
       #Arrange
       Warehouse.create(name: 'Rio', code: 'SDU' , city: 'Rio de Janeiro',
-                     state: 'RJ', cep: '80000-000',
+                     state: 'RJ', cep: '80000-000', address: 'Rua do Malandro, 22',
                      area: 60_000, useful_area:50_000,
                      description:'Galpão principal do Rio de Janeiro')
-      Warehouse.create(name: 'Maceio', code: 'MCZ', city: 'Maceio',
-                     state:'AL', cep: '600000-000',
+      Warehouse.create(name: 'Maceio', code: 'MCZ', city: 'Maceio', address: 'Avenida Luis, 44',
+                     state:'AL', cep: '60000-000',
                      area: 50_000, useful_area:43_000, description:'Bom tbm')
 
       #Act
