@@ -20,4 +20,21 @@ class WarehousesController < ApplicationController
             render :new
         end
     end
+    def edit
+        @warehouse = Warehouse.find(params[:id])
+        
+    end
+    def update
+        @warehouse = Warehouse.find(params[:id])
+        warehouse_params = params.require(:warehouse).permit(:name, :code, :city, :state,
+                                                             :address, :cep, :area,
+                                                             :useful_area, :description)
+        if @warehouse.update(warehouse_params)
+            redirect_to warehouse_path(@warehouse.id), notice: 'Galpão atualizado com sucesso'
+        else
+            flash.now[:notice] = "Galpão não pode ser atualizado"
+            render :edit
+        end
+
+    end
 end
