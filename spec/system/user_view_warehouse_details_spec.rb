@@ -5,7 +5,7 @@ describe 'Usuario visita página de detalhes' do
         #Arrange
         Warehouse.create(name: 'Aeroporto SP', code: 'GRU', city: 'Guarulhos', state: 'SP',
                          area: 100_000, useful_area: 80_000,
-                         address: 'Avenida do Aeroporto, 1000', cep: '15000-000', 
+                         address: 'Avenida do Aeroporto, 1000', cep: '15000000', 
                          description: 'Galpão destinado para cargas internacionais')
         #Act
         visit(root_path)
@@ -15,10 +15,10 @@ describe 'Usuario visita página de detalhes' do
         expect(page).to have_content('Galpão GRU')
         expect(page).to have_content('Nome: Aeroporto SP')
         expect(page).to have_content('Cidade: Guarulhos, SP')
-        expect(page).to have_content('Área: 100000 m2')
+        expect(page).to have_content('Área: 100000 m²')
         expect(page).to have_content('Endereço: Avenida do Aeroporto, 1000 CEP: 15000-000')
         expect(page).to have_content('Galpão destinado para cargas internacionais')
-        expect(page).to have_content('Área útil: 80000 m2')
+        expect(page).to have_content('Área útil: 80000 m²')
 
 
 
@@ -28,7 +28,7 @@ describe 'Usuario visita página de detalhes' do
         #Arrange
         Warehouse.create(name: 'Aeroporto SP', code: 'GRU', city: 'Guarulhos', state: 'SP',
                          area: 100_000, useful_area: 80_000, 
-                         address: 'Avenida do Aeroporto, 1000', cep: '15000-000', 
+                         address: 'Avenida do Aeroporto, 1000', cep: '15000000', 
                          description: 'Galpão destinado para cargas internacionais')
         #Act
         visit(root_path)

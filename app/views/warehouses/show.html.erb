@@ -1,4 +1,6 @@
-<h2> Galpão <%= @warehouse.code %> </h2> <%= link_to 'Editar', edit_warehouse_path(@warehouse.id) %>
+<h2> Galpão <%= @warehouse.code %> </h2>
+<%= link_to 'Editar', edit_warehouse_path(@warehouse.id) %>
+<%= button_to('Remover', warehouse_path(@warehouse.id), method: :delete) %>
 <h3> <%= @warehouse.description %> </h3>
 <div>
   <dl>
@@ -9,11 +11,11 @@
     <dt><strong>Endereço:</strong></dt>
     <dd><%= @warehouse.address %></dd>
     <dt><strong>CEP:</strong></dt>
-    <dd><%= @warehouse.cep %></dd>
+    <dd><%= @warehouse.cep.insert(5,'-') %></dd>
     <dt><strong>Área:</strong></dt>
-    <dd><%= @warehouse.area %> m2</dd>
+    <dd><%= @warehouse.area %> m²</dd>
     <dt><strong>Área útil:</strong></dt>
-    <dd><%= @warehouse.useful_area %> m2</dd>
+    <dd><%= @warehouse.useful_area %> m²</dd>
     
    
     

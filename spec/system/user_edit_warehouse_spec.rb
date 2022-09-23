@@ -5,7 +5,7 @@ describe 'Usuário edita dados de galpão' do
         #Arrange
         w = Warehouse.create!(name: 'Aeroporto SP', code: 'GRU', city: 'Guarulhos', state: 'SP',
                                     area: 100_000, useful_area: 80_000,
-                                    address: 'Avenida do Aeroporto, 1000', cep: '15000-000', 
+                                    address: 'Avenida do Aeroporto, 1000', cep: '15000000', 
                                     description: 'Galpão destinado para cargas internacionais')
         #Act
         visit root_path
@@ -19,7 +19,7 @@ describe 'Usuário edita dados de galpão' do
         expect(page).to have_field('Cidade', with: 'Guarulhos')
         expect(page).to have_field('Estado', with: 'SP')
         expect(page).to have_field('Endereço', with: 'Avenida do Aeroporto, 1000')
-        expect(page).to have_field('CEP', with: '15000-000')
+        expect(page).to have_field('CEP', with: '15000000')
         expect(page).to have_field('Área', with: '100000')
         expect(page).to have_field('Área útil', with: '80000')
         expect(page).to have_field('Descrição', with: 'Galpão destinado para cargas internacionais')
@@ -29,7 +29,7 @@ describe 'Usuário edita dados de galpão' do
         #Arrange
         w = Warehouse.create!(name: 'Aeroporto SP', code: 'GRU', city: 'Guarulhos', state: 'SP',
                                     area: 100_000, useful_area: 80_000,
-                                    address: 'Avenida do Aeroporto, 1000', cep: '15000-000', 
+                                    address: 'Avenida do Aeroporto, 1000', cep: '15000000', 
                                     description: 'Galpão destinado para cargas internacionais')
         #Act
         visit root_path
@@ -42,7 +42,7 @@ describe 'Usuário edita dados de galpão' do
         click_on 'Enviar'
         #Assert
         expect(page).to have_content('Nome: Galpão Guarulhos')
-        expect(page).to have_content('Área: 150000 m2')
+        expect(page).to have_content('Área: 150000 m²')
         expect(page).to have_content('CEP: 16000-000')
         expect(page).to have_content('Galpão destinado para cargas nacionais e internacionais')
         expect(page).to have_content('Galpão atualizado com sucesso')
@@ -52,7 +52,7 @@ describe 'Usuário edita dados de galpão' do
         #Arrange
         w = Warehouse.create!(name: 'Aeroporto SP', code: 'GRU', city: 'Guarulhos', state: 'SP',
                               area: 100_000, useful_area: 80_000,
-                              address: 'Avenida do Aeroporto, 1000', cep: '15000-000', 
+                              address: 'Avenida do Aeroporto, 1000', cep: '15000000', 
                               description: 'Galpão destinado para cargas internacionais')
         #Act
         visit root_path

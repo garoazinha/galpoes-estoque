@@ -39,7 +39,7 @@ describe 'Usuário registra novo galpao' do
     expect(current_path).to eq root_path
     expect(page).to have_content('Rio de Janeiro')
     expect(page).to have_content('RIO')
-    expect(page).to have_content('40000 m2')
+    expect(page).to have_content('40000 m²')
     expect(page).to have_content('Galpão cadastrado com sucesso')
   end
 
