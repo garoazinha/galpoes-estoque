@@ -1,4 +1,5 @@
-<h2>Cadastrar novo fornecedor</h2>
+<h2>Editar fornecedor</h2>
+
 <% if @supplier.errors.any? %>
   <ul>
     <% @supplier.errors.each do |e| %>
@@ -41,7 +42,7 @@
     <%= f.text_field :phone %>
   </div>
   <div>
-    <%= f.submit 'Enviar' %>
+    <%= f.submit 'Atualizar' %>
   </div>
   
 <% end %>

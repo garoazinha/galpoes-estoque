@@ -14,7 +14,7 @@ describe 'Usuário vê detalhes de fornecedores' do
 
     #Assert
     expect(page).to have_content('Waystar Roy')
-    expect(page).to have_content('Razão Social: Waystar Roy Group Inc')
+    expect(page).to have_content('Razão social: Waystar Roy Group Inc')
     expect(page).to have_content('CNPJ: 56.478.345/2184.39')
     expect(page).to have_content('Endereço: Rodovia do Cacau, 300 / São Paulo - SP')
     expect(page).to have_content('E-mail: contato@waystar.com')
