@@ -17,8 +17,9 @@
     </header>
     <nav>
           <%= link_to 'Home', root_path, class: "botao" %>
-          <%= link_to 'Novo Galpão', new_warehouse_path, class: "botao" %>
+          
           <%= link_to 'Fornecedores', suppliers_path, class: "botao" %>
+          <%= link_to 'Modelos de Produtos', product_models_path, class: "botao" %>
     </nav>
     <div>
       <%= flash[:notice]  %>

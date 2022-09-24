@@ -3,13 +3,8 @@ header {
     background-color: lightgray;
 }
 
-#warehouses {
-    background-color: azure;
-    padding-left: 2%;
-    
-}
 
-header,h1 {
+header h1 {
     color: darkslateblue;
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
