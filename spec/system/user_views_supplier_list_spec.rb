@@ -14,11 +14,13 @@ describe 'Usuário vê lista de usuários' do
   it 'com sucesso' do
     #Arrange
     Supplier.create!(corp_name: 'Waystar Roy Group Inc', brand_name: 'Waystar Roy',
-                     registration_id: '5647834521843', city: 'São Paulo', state: 'SP',
-                     full_address: 'Rodovia do Cacau, 300', email:'contato@nestinc.com')
+                     registration_id: '56478345321843', city: 'São Paulo', state: 'SP',
+                     full_address: 'Rodovia do Cacau, 300', email:'contato@nestinc.com',
+                     phone: '3290906463')
     Supplier.create!(corp_name:'Lannister Brasil LTDA', brand_name: 'Lannister',
-                     registration_id: '9182744738482', city: 'Rio de Janeiro', state: 'RJ',
-                     full_address: 'Avenida Castelão. 423', email: 'ouv@lannister.com')
+                     registration_id: '91827447385482', city: 'Rio de Janeiro', state: 'RJ',
+                     full_address: 'Avenida Castelão. 423', email: 'ouv@lannister.com',
+                     phone: '2637920382')
     #Act
     visit root_path
     click_on 'Fornecedores'

@@ -132,10 +132,34 @@ RSpec.describe Warehouse, type: :model do
     end
     context 'for zipcode format' do
       
-      it 'false when format not 00000-000' do
+      it 'false when there are letters in zipcode' do
         #Arrange
         warehouse= Warehouse.new(name:'Goiasnia', code: 'GOC', city: 'Goiania', state: 'GO',
                                 cep: '65400aaa', address: 'Rua do Machado, 44',
+                                area: 30000, useful_area: 25000,
+                                description: 'Insumos industriais')
+        #Act
+        result = warehouse.valid?
+        #Assert
+        expect(result).to be_falsy
+        
+      end
+      it 'false when there are more than 8 digits' do
+        #Arrange
+        warehouse= Warehouse.new(name:'Goiasnia', code: 'GOC', city: 'Goiania', state: 'GO',
+                                cep: '654002289723', address: 'Rua do Machado, 44',
+                                area: 30000, useful_area: 25000,
+                                description: 'Insumos industriais')
+        #Act
+        result = warehouse.valid?
+        #Assert
+        expect(result).to be_falsy
+        
+      end
+      it 'false when there are less than 8 digits' do
+        #Arrange
+        warehouse= Warehouse.new(name:'Goiasnia', code: 'GOC', city: 'Goiania', state: 'GO',
+                                cep: '6', address: 'Rua do Machado, 44',
                                 area: 30000, useful_area: 25000,
                                 description: 'Insumos industriais')
         #Act

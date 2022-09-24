@@ -1,0 +1,19 @@
+<h2><%= @supplier.brand_name %></h2>
+<div>
+  <dl>
+    <dt><strong>Razão Social:</strong></dt>
+    <dd><%= @supplier.corp_name %></dd>
+    <dt><strong>Nome Fantasia:</strong></dt>
+    <dd><%= @supplier.brand_name %></dd>
+    <dt><strong>Endereço:</strong></dt>
+    <dd><%= @supplier.full_address %> / <%= @supplier.city %> - <%= @supplier.state %></dd>
+    <dt><strong>CNPJ:</strong></dt>
+    <dd><%= @supplier.registration_id.insert(2,'.').insert(6,'.').insert(10,'/').insert(15,'.') %></dd>
+    <dt><strong>E-mail:</strong></dt>
+    <dd><%= @supplier.email %></dd>
+    
+  </dl>
+
+</div>
+
+<%= link_to 'Voltar', suppliers_path %>
