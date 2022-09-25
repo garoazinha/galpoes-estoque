@@ -1,8 +1,9 @@
 pt-BR:
   activerecord:
     models:
-      warehouse: galpão
-      supplier: fornecedor
+      warehouse: Galpão
+      supplier: Fornecedor
+      product_model: Modelo de Produto
     attributes:
       warehouse:
         name: Nome
@@ -23,4 +24,13 @@ pt-BR:
         registration_id: CNPJ
         email: E-mail
         phone: Telefone
+      product_model: 
+        name: Nome
+        sku: SKU
+        width: Largura
+        height: Altura
+        depth: Profundidade
+        weight: Peso
+        supplier: Fornecedor
+        supplier_id: Fornecedor
 

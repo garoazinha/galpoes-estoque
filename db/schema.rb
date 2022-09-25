@@ -10,12 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_24_031941) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_24_035654) do
   create_table "product_models", force: :cascade do |t|
     t.string "name"
     t.string "sku"
     t.integer "width"
-    t.integer "length"
+    t.integer "depth"
     t.integer "height"
     t.integer "weight"
     t.integer "supplier_id", null: false
