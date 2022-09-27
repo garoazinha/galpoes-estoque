@@ -18,5 +18,26 @@
   </dl>
 
 </div>
+<h3>Produtos deste fornecedor</h3>
+<table>
+  <% @product_models.each_slice(2) do |pms| %>
+    <tr>
+      <% pms.each do |pm| %>
+        <td style="border:2px solid; padding: 5px;">
+          <strong><%= pm.name %></strong>
+          <dl>
+            <dt>SKU:</dt>
+            <dd><%= pm.sku %></dd>
+            <dt>Dimensões:</dt>
+            <dd><%= pm.width %>cm x <%= pm.height %>cm x <%= pm.depth %>cm</dd>
+            <dt>Peso:</dt>
+            <dd><%= pm.weight %>g</dd>
+            
+          </dl>
+        </td>
+      <% end %>
+    </tr>
+  <% end %>
+</table>
 
 <%= link_to 'Voltar', suppliers_path %>
