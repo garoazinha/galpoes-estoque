@@ -12,18 +12,29 @@ header h1 {
 
 a.login {
     float: right;
-
     background-color: green;
 
     
 }
-p.login {
-    color: black;
-}
+
 button.login {
     float: right;
     background-color: green;
+    color:white;
+    padding: 15px 10px; 
+    border: 0px;
+    font-family: inherit; /* For all browsers */
+    font-size: 100%; /* For all browsers */
+    line-height: 1.15; 
 
+}
+button.login:hover {
+    background-color: white;
+    color: black;
+}
+p.login {
+    color: black;
+    float:right;
 }
 
 

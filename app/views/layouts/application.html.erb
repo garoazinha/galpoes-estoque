@@ -21,8 +21,9 @@
           <%= link_to 'Fornecedores', suppliers_path, class: "botao" %>
           <%= link_to 'Modelos de Produtos', product_models_path, class: "botao" %>
           <% if user_signed_in? %>
-            <p class="login"><%= current_user.email %></p>
             <%= button_to 'Sair', destroy_user_session_path, class: "login", method: :delete %>
+            <p class="login"><%= current_user.email %></p>
+            
           <% else %>
             <%= link_to 'Entrar', new_user_session_url, class: "login" %>
           <% end %>
