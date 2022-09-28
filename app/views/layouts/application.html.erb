@@ -21,10 +21,10 @@
           <%= link_to 'Fornecedores', suppliers_path, class: "botao" %>
           <%= link_to 'Modelos de Produtos', product_models_path, class: "botao" %>
           <% if user_signed_in? %>
-            <%= current_user.email %>
-            <%= link_to 'Sair', root_path, class: "botao" %>
+            <p class="login"><%= current_user.email %></p>
+            <%= button_to 'Sair', destroy_user_session_path, class: "login", method: :delete %>
           <% else %>
-            <%= link_to 'Entrar', new_user_session_url, class: "botao" %>
+            <%= link_to 'Entrar', new_user_session_url, class: "login" %>
           <% end %>
     </nav>
     <div>
