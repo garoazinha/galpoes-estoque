@@ -3,11 +3,13 @@ require 'rails_helper'
 describe 'Usuário vê detalhes de fornecedores' do
   it 'em página de detalhes' do
     #Arrange
+    usuario = User.create!(name: 'Mariana', email: 'mari@mari.com', password: 'password')
     Supplier.create!(corp_name: 'Waystar Roy Group Inc', brand_name: 'Waystar Roy',
                       registration_id: '56478345218439', city: 'São Paulo', state: 'SP',
                       full_address: 'Rodovia do Cacau, 300', email:'contato@waystar.com',
                       phone: '3290906463')
     #Act
+    login_as(usuario)
     visit root_path
     click_on 'Fornecedores'
     click_on 'Waystar Roy'
@@ -24,11 +26,13 @@ describe 'Usuário vê detalhes de fornecedores' do
   end
   it 'e volta para a tela de fornecedores' do
     #Arrange
+    usuario = User.create!(name: 'Mariana', email: 'mari@mari.com', password: 'password')
     Supplier.create!(corp_name: 'Waystar Roy Group Inc', brand_name: 'Waystar Roy',
                     registration_id: '56478345218439', city: 'São Paulo', state: 'SP',
                     full_address: 'Rodovia do Cacau, 300', email:'contato@waystar.com',
                     phone: '3290906463')
     #Act
+    login_as(usuario)
     visit root_path
     click_on 'Fornecedores'
     click_on 'Waystar Roy'

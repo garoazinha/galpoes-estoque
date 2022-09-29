@@ -7,8 +7,10 @@ describe 'Usuário edita fornecedor' do
                     registration_id: '56478345218439', city: 'São Paulo', state: 'SP',
                     full_address: 'Rodovia do Cacau, 300', email:'contato@waystar.com',
                     phone: '3290906463')
+    usuario = User.create!(name: 'Mariana', email: 'mari@mari.com', password: 'password')
 
     #Act
+    login_as(usuario)
     visit root_path
     click_on 'Fornecedores'
     click_on 'Waystar Roy'
@@ -32,8 +34,9 @@ describe 'Usuário edita fornecedor' do
                     registration_id: '56478345218439', city: 'São Paulo', state: 'SP',
                     full_address: 'Rodovia do Cacau, 300', email:'contato@waystar.com',
                     phone: '3290906463')
-
+    usuario = User.create!(name: 'Mariana', email: 'mari@mari.com', password: 'password')
     #Act
+    login_as(usuario)
     visit root_path
     click_on 'Fornecedores'
     click_on 'Waystar Roy'
@@ -58,8 +61,9 @@ describe 'Usuário edita fornecedor' do
                     registration_id: '56478345218439', city: 'São Paulo', state: 'SP',
                     full_address: 'Rodovia do Cacau, 300', email:'contato@waystar.com',
                     phone: '3290906463')
-
+    usuario = User.create!(name: 'Mariana', email: 'mari@mari.com', password: 'password')
     #Act
+    login_as(usuario)
     visit root_path
     click_on 'Fornecedores'
     click_on 'Waystar Roy'

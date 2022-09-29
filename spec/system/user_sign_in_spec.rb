@@ -6,7 +6,9 @@ describe 'Usuário se autentica' do
     User.create!(name: 'Mariana', email:'mari@mari.com', password: 'password')
     #Act
     visit root_path
-    click_on 'Entrar'
+    within('nav') do
+      click_on 'Entrar'
+    end
     
     within('form') do
       fill_in 'E-mail', with: 'mari@mari.com'
@@ -29,7 +31,9 @@ describe 'Usuário se autentica' do
     User.create!(name: 'Mariana', email:'mari@mari.com', password: 'password')
     #Act
     visit root_path
-    click_on 'Entrar'
+    within('nav') do
+      click_on 'Entrar'
+    end
     within('form') do
       fill_in 'E-mail', with: 'mari@mari.com'
       fill_in 'Senha', with: 'password'
@@ -38,11 +42,10 @@ describe 'Usuário se autentica' do
     click_on 'Sair'
 
     #Assert 
-    expect(page).to have_content('Logout efetuado com sucesso')
+    expect(page).to have_content('Para continuar, faça login ou registre-se')
     expect(page).to have_link('Entrar')
     expect(page).not_to have_button('Sair')
     expect(page).not_to have_content('mari@mari.com')
-
 
 
   end

@@ -79,6 +79,18 @@ RSpec.describe ProductModel, type: :model do
       #Assert
       expect(resultado).to be_falsy
     end
+    it 'fornecedor é obrigatório' do
+      #Arrange
+      sup = Supplier.create!(corp_name: 'HP Industries INC', brand_name: 'HP', city: 'São Paulo',
+                             state:'SP', registration_id: '12345678909876', email: 'ouv@hp.com', 
+                             phone: '11234561234')
+      pm = ProductModel.create(name: 'Calculadora HPX30a', sku: 'CALCX30-HP-HPCX30ABC',
+                               width: 12, height: nil, depth: 2, weight: 50, supplier: nil)
+      #Act
+      resultado = pm.valid?
+      #Assert
+      expect(resultado).to be_falsy
+    end
 
     it 'falso se largura é menor ou igual a zero' do
       #Arrange

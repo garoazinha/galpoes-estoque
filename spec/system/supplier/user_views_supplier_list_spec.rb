@@ -1,9 +1,11 @@
 require 'rails_helper'
-describe 'Usuário vê lista de usuários' do
+describe 'Usuário vê lista de fornecedores' do
   it 'em seu próprio menu' do
     #Arrange
+    usuario = User.create!(name: 'Mariana', email: 'mari@mari.com', password: 'password')
 
     #Act
+    login_as(usuario)
     visit root_path
     within('nav') do
      click_on 'Fornecedores'
@@ -13,6 +15,7 @@ describe 'Usuário vê lista de usuários' do
   end
   it 'com sucesso' do
     #Arrange
+    usuario = User.create!(name: 'Mariana', email: 'mari@mari.com', password: 'password')
     Supplier.create!(corp_name: 'Waystar Roy Group Inc', brand_name: 'Waystar Roy',
                      registration_id: '56478345321843', city: 'São Paulo', state: 'SP',
                      full_address: 'Rodovia do Cacau, 300', email:'contato@nestinc.com',
@@ -22,6 +25,7 @@ describe 'Usuário vê lista de usuários' do
                      full_address: 'Avenida Castelão. 423', email: 'ouv@lannister.com',
                      phone: '2637920382')
     #Act
+    login_as(usuario)
     visit root_path
     click_on 'Fornecedores'
 
@@ -34,7 +38,9 @@ describe 'Usuário vê lista de usuários' do
   end
   it 'e não há fornecedores cadastrados' do
     #Arrange
+    usuario = User.create!(name: 'Mariana', email: 'mari@mari.com', password: 'password')
     #Act
+    login_as(usuario)
     visit root_path
     click_on 'Fornecedores'
     #Assert

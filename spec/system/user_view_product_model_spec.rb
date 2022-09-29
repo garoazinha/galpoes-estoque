@@ -1,8 +1,21 @@
 require 'rails_helper'
 describe 'Usuário vê modelos de produto' do
-  it 'a partir do menu' do
+  it 'se estiver autenticado' do
     #Arrange
     #Act
+    visit root_path
+    within('nav') do
+     click_on 'Modelos de Produtos'
+    end
+    #Assert
+    expect(current_path).to eq(new_user_session_path)
+  end
+
+  it 'a partir do menu' do
+    #Arrange
+    usuario = User.create!(name: 'Mariana', email: 'mari@mari.com', password: 'password')
+    #Act
+    login_as(usuario)
     visit root_path
     within('nav') do
      click_on 'Modelos de Produtos'
@@ -13,6 +26,7 @@ describe 'Usuário vê modelos de produto' do
   end
   it 'com sucesso' do
     #Arrange
+    usuario = User.create!(name: 'Mariana', email: 'mari@mari.com', password: 'password')
     x = Supplier.create!(corp_name: 'Samsung Eletronicos LTDA',
                         brand_name: 'Samsung', registration_id: '12345678123456',
                         city: 'São Paulo', state: 'SP', full_address: 'Avenida Naçoes Unidas, 1000',
@@ -22,6 +36,7 @@ describe 'Usuário vê modelos de produto' do
     ProductModel.create(name: 'SoundBar 7.1 Surround', sku: 'SOU71-SAMSU-NOIZ71AB', width: 80, height: 15,
                          depth: 20 , weight: 3000, supplier: x)
     #Act
+    login_as(usuario)
     visit root_path
     click_on 'Modelos de Produtos'
     #Assert
@@ -36,7 +51,9 @@ describe 'Usuário vê modelos de produto' do
 
   it 'e não existem produtos cadastrados' do
     #Arrange
+    usuario = User.create!(name: 'Mariana', email: 'mari@mari.com', password: 'password')
     #Act
+    login_as(usuario)
     visit root_path
     click_on 'Modelos de Produtos'
     #Assert
@@ -45,6 +62,7 @@ describe 'Usuário vê modelos de produto' do
 
   it 'em página de fornecedores' do
     #Arrange
+    usuario = User.create!(name: 'Mariana', email: 'mari@mari.com', password: 'password')
     x = Supplier.create!(corp_name: 'Samsung Eletronicos LTDA',
                         brand_name: 'Samsung', registration_id: '12345678123456',
                         city: 'São Paulo', state: 'SP', full_address: 'Avenida Naçoes Unidas, 1000',
@@ -55,6 +73,7 @@ describe 'Usuário vê modelos de produto' do
                          depth: 20 , weight: 3000, supplier: x)
 
     #Act
+    login_as(usuario)
     visit root_path
     click_on 'Fornecedores'
     click_on 'Samsung'

@@ -1,13 +1,15 @@
 require 'rails_helper'
 
-describe 'Usuario visita página de detalhes' do
+describe 'Usuario visita página de detalhes de galpão' do
     it 'e vê informações adicionais' do
         #Arrange
+        usuario = User.create!(name: 'Mariana', email: 'mari@mari.com', password: 'password')
         Warehouse.create(name: 'Aeroporto SP', code: 'GRU', city: 'Guarulhos', state: 'SP',
                          area: 100_000, useful_area: 80_000,
                          address: 'Avenida do Aeroporto, 1000', cep: '15000000', 
                          description: 'Galpão destinado para cargas internacionais')
         #Act
+        login_as(usuario)
         visit(root_path)
         click_on('Aeroporto SP')
         #Assert
@@ -26,11 +28,13 @@ describe 'Usuario visita página de detalhes' do
     end
     it 'e volta a tela inicial' do 
         #Arrange
+        usuario = User.create!(name: 'Mariana', email: 'mari@mari.com', password: 'password')
         Warehouse.create(name: 'Aeroporto SP', code: 'GRU', city: 'Guarulhos', state: 'SP',
                          area: 100_000, useful_area: 80_000, 
                          address: 'Avenida do Aeroporto, 1000', cep: '15000000', 
                          description: 'Galpão destinado para cargas internacionais')
         #Act
+        login_as(usuario)
         visit(root_path)
         click_on 'Aeroporto SP'
         click_on 'Voltar'

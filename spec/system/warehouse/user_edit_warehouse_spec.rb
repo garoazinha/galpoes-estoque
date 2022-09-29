@@ -3,11 +3,13 @@ require 'rails_helper'
 describe 'Usuário edita dados de galpão' do
     it 'a partir da página de detalhes' do
         #Arrange
+        usuario = User.create!(name: 'Mariana', email: 'mari@mari.com', password: 'password')
         w = Warehouse.create!(name: 'Aeroporto SP', code: 'GRU', city: 'Guarulhos', state: 'SP',
                                     area: 100_000, useful_area: 80_000,
                                     address: 'Avenida do Aeroporto, 1000', cep: '15000000', 
                                     description: 'Galpão destinado para cargas internacionais')
         #Act
+        login_as(usuario)
         visit root_path
         click_on 'Aeroporto SP'
         click_on 'Editar'
@@ -27,11 +29,13 @@ describe 'Usuário edita dados de galpão' do
     end
     it 'com sucesso' do
         #Arrange
+        usuario = User.create!(name: 'Mariana', email: 'mari@mari.com', password: 'password')
         w = Warehouse.create!(name: 'Aeroporto SP', code: 'GRU', city: 'Guarulhos', state: 'SP',
                                     area: 100_000, useful_area: 80_000,
                                     address: 'Avenida do Aeroporto, 1000', cep: '15000000', 
                                     description: 'Galpão destinado para cargas internacionais')
         #Act
+        login_as(usuario)
         visit root_path
         click_on 'Aeroporto SP'
         click_on 'Editar'
@@ -50,11 +54,13 @@ describe 'Usuário edita dados de galpão' do
     end
     it 'e mantém os dados obrigatórios' do
         #Arrange
+        usuario = User.create!(name: 'Mariana', email: 'mari@mari.com', password: 'password')
         w = Warehouse.create!(name: 'Aeroporto SP', code: 'GRU', city: 'Guarulhos', state: 'SP',
                               area: 100_000, useful_area: 80_000,
                               address: 'Avenida do Aeroporto, 1000', cep: '15000000', 
                               description: 'Galpão destinado para cargas internacionais')
         #Act
+        login_as(usuario)
         visit root_path
         click_on 'Aeroporto SP'
         click_on 'Editar'

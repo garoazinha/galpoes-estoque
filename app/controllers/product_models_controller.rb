@@ -1,4 +1,5 @@
 class ProductModelsController < ApplicationController
+  before_action :authenticate_user!, only: [:index]
   def show
     @product_model = ProductModel.find(params[:id])
   end
@@ -23,4 +24,25 @@ class ProductModelsController < ApplicationController
       render :new
     end
   end
+
+  def edit
+    @suppliers = Supplier.all
+    @product_model = ProductModel.find(params[:id])
+  end
+  
+  def update
+    @product_model = ProductModel.find(params[:id])
+    product_model_params = params.require(:product_model).permit(:name, :sku, :width, :height,
+                                                                 :depth, :weight, :supplier_id)
+    
+    if @product_model.update(product_model_params)
+      redirect_to @product_model, notice: 'Modelo de produto atualizado com sucesso'
+    else
+      @suppliers= Supplier.all
+      flash.now[:notice] = 'Não foi possível atualizar modelo de produto'
+      render :new
+    end
+  end
+
+  
 end

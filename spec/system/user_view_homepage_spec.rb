@@ -2,6 +2,7 @@ require 'rails_helper'
 describe 'Usuario visita tela inicial' do
     it 'e vê o nome da app' do 
         #Arrange
+        
         #Act
         visit(root_path)
 
@@ -13,6 +14,7 @@ describe 'Usuario visita tela inicial' do
 
     it 'e vê os galpões cadastrados' do
       #Arrange
+      usuario = User.create!(name: 'Mariana', email: 'mari@mari.com', password: 'password')
       Warehouse.create(name: 'Rio', code: 'SDU' , city: 'Rio de Janeiro',
                      state: 'RJ', cep: '80000000', address: 'Rua do Malandro, 22',
                      area: 60_000, useful_area:50_000,
@@ -22,6 +24,7 @@ describe 'Usuario visita tela inicial' do
                      area: 50_000, useful_area:43_000, description:'Bom tbm')
 
       #Act
+      login_as(usuario)
       visit(root_path)
       #Assert
       expect(page).to have_content('Rio')
@@ -39,7 +42,9 @@ describe 'Usuario visita tela inicial' do
 
     it 'e não tem galpões cadastrados' do
         #Arrange
+        usuario = User.create!(name: 'Mariana', email: 'mari@mari.com', password: 'password')
         #Act
+        login_as(usuario)
         visit(root_path)
         #Assert
         expect(page).to have_content('Não existem galpões cadastrados')
