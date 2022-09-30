@@ -20,6 +20,7 @@
           
           <%= link_to 'Fornecedores', suppliers_path, class: "botao" %>
           <%= link_to 'Modelos de Produtos', product_models_path, class: "botao" %>
+          <%= link_to 'Registrar Pedido', new_order_path %>
           <% if user_signed_in? %>
             <%= button_to 'Sair', destroy_user_session_path, class: "login", method: :delete %>
             <p class="login"><%= current_user.email %></p>

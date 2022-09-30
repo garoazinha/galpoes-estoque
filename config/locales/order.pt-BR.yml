@@ -1,0 +1,9 @@
+pt-BR:
+  activerecord:
+    models:
+      order: Pedido
+    attributes:
+      order:
+        name: Nome
+        warehouse_id: Galpão destino
+        supplier_id: Fornecedor
