@@ -1,19 +1,23 @@
-<h2>Pedido</h2>
+<h2><%= Order.model_name.human %> <%= @order.code %></h2>
 
 <div>
-  <%= @order.id %>
-  <table>
+  <table class = "order">
     <tr>
-      <th>Usuário responsável</th>
-      <th>Galpão destino</th>
-      <th>Fornecedor</th>
-      <th>Data prevista para entrega</th>
-    <tr>
-    <tr>
-      <td><%= @order.user.name %> | <%= @order.user.email %></td>
-      <td><%= @order.warehouse.name %></td>
-      <td><%= @order.supplier.corp_name %></td>
-      <td><%= I18n.localize(@order.estimated_delivery_date) %></td>
+      <td class ="order-h"><%= Order.human_attribute_name(:user_id) %></td>
+      <td class ="order"><%= @order.user.description %></td>
     </tr>
+    <tr>
+      <td class ="order-h"><%= Order.human_attribute_name(:warehouse_id) %></td>
+      <td class ="order"><%= @order.warehouse.full_description %></td>
+    </tr>
+    <tr>
+      <td class ="order-h"><%= Order.human_attribute_name(:supplier_id) %></td>
+      <td class ="order"><%= @order.supplier.full_description %></td>
+    </tr>
+    <tr>
+      <td class ="order-h"><%= Order.human_attribute_name(:estimated_delivery_date) %></td>
+      <td class ="order"><%= I18n.localize(@order.estimated_delivery_date) %></td>
+    </tr>
+  
   </table>
 </div>

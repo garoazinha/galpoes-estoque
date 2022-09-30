@@ -50,7 +50,7 @@ describe 'Usuário edita fornecedor' do
     expect(page).to have_content('Fornecedor atualizado com sucesso')
     expect(page).to have_content('Razão social: Waystar Roy Group INC')
     expect(page).to have_content('Nome fantasia: Waystar Roy')
-    expect(page).to have_content('CNPJ: 00.000.345/2184.39')
+    expect(page).to have_content('CNPJ: 00.000.345/2184-39')
 
     
   end

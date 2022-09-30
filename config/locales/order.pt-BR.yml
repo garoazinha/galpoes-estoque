@@ -6,4 +6,8 @@ pt-BR:
       order:
         name: Nome
         warehouse_id: Galpão destino
+        warehouse: Galpão destino
         supplier_id: Fornecedor
+        supplier: Fornecedor
+        estimated_delivery_date: Data prevista para entrega
+        user_id: Usuário responsável

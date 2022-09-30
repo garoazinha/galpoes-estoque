@@ -12,22 +12,24 @@
 
   <body>
     <header>
-      <h1 class="header"> Sistema de Galpões & Estoque </h1>
+      <%= link_to root_path do %>
+        <h1 class="header">  Sistema de Galpões & Estoque </h1>
+      <% end %>
       
     </header>
     <nav>
-          <%= link_to 'Home', root_path, class: "botao" %>
           
-          <%= link_to 'Fornecedores', suppliers_path, class: "botao" %>
-          <%= link_to 'Modelos de Produtos', product_models_path, class: "botao" %>
-          <%= link_to 'Registrar Pedido', new_order_path %>
-          <% if user_signed_in? %>
-            <%= button_to 'Sair', destroy_user_session_path, class: "login", method: :delete %>
-            <p class="login"><%= current_user.email %></p>
-            
-          <% else %>
-            <%= link_to 'Entrar', new_user_session_url, class: "login" %>
-          <% end %>
+          
+      <%= link_to 'Fornecedores', suppliers_path, class: "botao" %>
+      <%= link_to 'Modelos de Produtos', product_models_path, class: "botao" %>
+      <%= link_to 'Registrar Pedido', new_order_path %>
+      <% if user_signed_in? %>
+        <%= button_to 'Sair', destroy_user_session_path, class: "login", method: :delete %>
+        <p class="login"><%= current_user.description %></p>
+        
+      <% else %>
+        <%= link_to 'Entrar', new_user_session_url, class: "login" %>
+      <% end %>
     </nav>
     <div>
       <%= notice  %>

@@ -31,21 +31,22 @@ describe 'Usuário cadastra pedido' do
                                 registration_id: '56478345218439', city: 'São Paulo', state: 'SP',
                                 full_address: 'Rodovia do Cacau, 300', email:'contato@waystar.com',
                                 phone: '3290906463')
-    
+    allow(SecureRandom).to receive(:alphanumeric).with(8).and_return('ABC12345')
     #Act
     login_as(user)
     visit root_path
     click_on 'Registrar Pedido'
-    select warehouse.name, from: 'Galpão destino'
-    select supplier.corp_name, from: 'Fornecedor'
-    fill_in 'Data prevista', with: '30/12/2022'
+    select "GRU - Aeroporto SP", from: 'Galpão destino'
+    select "Waystar Roy Group Inc - CNPJ: 56.478.345/2184-39", from: 'Fornecedor'
+    fill_in 'Data prevista para entrega', with: '30/12/2022'
     click_on 'Gravar'
     
     #Assert 
     expect(page).to have_content('Pedido registrado com sucesso')
-    expect(page).to have_content('Aeroporto SP')
+    expect(page).to have_content("Pedido ABC12345")
+    expect(page).to have_content('GRU - Aeroporto SP')
     expect(page).to have_content('Waystar Roy Group Inc')
-    expect(page).to have_content('Mariana | mari@mari.com')
+    expect(page).to have_content('Mariana - mari@mari.com')
     expect(page).to have_content('30/12/2022')
     expect(page).not_to have_content('Galpão Rio')
     expect(page).not_to have_content('Lannister Brasil LTDA')

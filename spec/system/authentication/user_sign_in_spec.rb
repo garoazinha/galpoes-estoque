@@ -21,7 +21,7 @@ describe 'Usuário se autentica' do
     expect(page).not_to have_link('Entrar')
 
     within('nav') do
-      expect(page).to have_content('mari@mari.com')
+      expect(page).to have_content('Mariana - mari@mari.com')
     end
     expect(page).to have_content('Login efetuado com sucesso')
   end

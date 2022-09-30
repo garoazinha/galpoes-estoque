@@ -3,13 +3,13 @@
 
 <div>
 <dl>
-  <dt>SKU:</dt>
+  <dt><%= ProductModel.human_attribute_name("sku") %>:</dt>
   <dd><%= @product_model.sku %></dd>
   <dt>Dimensões:</dt>
   <dd><%= @product_model.width %>cm x <%= @product_model.height %>cm x <%= @product_model.depth %>cm</dd>
-  <dt>Peso:</dt>
+  <dt><%= ProductModel.human_attribute_name("weight") %>:</dt>
   <dd><%= @product_model.weight %>g</dd>
-  <dt>Fornecedor:</dt>
+  <dt><%= ProductModel.human_attribute_name("supplier_id") %>:</dt>
   <dd><%= @product_model.supplier.brand_name %></dd>
 </dl>
 

@@ -110,4 +110,6 @@ RSpec.describe Supplier, type: :model do
       end
     end
   end
+
+ 
 end
