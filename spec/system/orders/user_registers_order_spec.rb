@@ -58,18 +58,12 @@ describe 'Usuário cadastra pedido' do
   it 'sem sucesso se data for passada'do
     #Arrange
     user = User.create!(name: 'Mariana', email: 'mari@mari.com', password: 'password')
-    Warehouse.create!(name: 'Galpão Rio', code: 'SDU' , city: 'Rio de Janeiro',
-                    state: 'RJ', cep: '80000000', address: 'Rua do Malandro, 22',
-                    area: 60_000, useful_area:50_000,
-                    description:'Galpão principal do Rio de Janeiro')
+  
     warehouse = Warehouse.create!(name: 'Aeroporto SP', code: 'GRU', city: 'Guarulhos', state: 'SP',
                                 area: 100_000, useful_area: 80_000,
                                 address: 'Avenida do Aeroporto, 1000', cep: '15000000', 
                                 description: 'Galpão destinado para cargas internacionais')
-    Supplier.create!(corp_name:'Lannister Brasil LTDA', brand_name: 'Lannister',
-                                  registration_id: '91827447385482', city: 'Rio de Janeiro',
-                                  state: 'RJ', full_address: 'Avenida Castelão. 423',
-                                  email: 'ouv@lannister.com', phone: '2637920382')
+    
     supplier = Supplier.create!(corp_name: 'Waystar Roy Group Inc', brand_name: 'Waystar Roy',
                                 registration_id: '56478345218439', city: 'São Paulo', state: 'SP',
                                 full_address: 'Rodovia do Cacau, 300', email:'contato@waystar.com',

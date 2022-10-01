@@ -1,3 +1,7 @@
+.querydiv {
+    padding: 10px;
+
+}
 header {
     padding: 20px;
     background-color: lightgray;
@@ -6,6 +10,7 @@ header {
 nav {
     background-color: lightcyan;
     overflow: hidden;
+    display: flex;
 
     
 }
@@ -121,3 +126,4 @@ td.order-h {
     border-color: grey;
 
 }
+

@@ -15,22 +15,28 @@
       <%= link_to root_path do %>
         <h1 class="header">  Sistema de Galpões & Estoque </h1>
       <% end %>
-      
-    </header>
-    <nav>
-          
-          
-      <%= link_to 'Fornecedores', suppliers_path, class: "botao" %>
-      <%= link_to 'Modelos de Produtos', product_models_path, class: "botao" %>
-      <%= link_to 'Registrar Pedido', new_order_path %>
-      <% if user_signed_in? %>
-        <%= button_to 'Sair', destroy_user_session_path, class: "login", method: :delete %>
-        <p class="login"><%= current_user.description %></p>
+      <nav>
+        <%= link_to 'Fornecedores', suppliers_path, class: "botao" %>
+        <%= link_to 'Modelos de Produtos', product_models_path, class: "botao" %>
+        <%= link_to 'Registrar Pedido', new_order_path %>
+        <% if user_signed_in? %> 
+          <div class="querydiv">
+          <%= form_with(url: search_orders_path, method: :get) do |f| %>
+            <%= f.label :query, "Buscar Pedido" %>
+            <%= f.text_field :query %>
+            <%= f.submit "Buscar" %>
+          <% end %>
+          </div>
         
-      <% else %>
-        <%= link_to 'Entrar', new_user_session_url, class: "login" %>
-      <% end %>
-    </nav>
+          <%= button_to 'Sair', destroy_user_session_path, class: "login", method: :delete %>
+          <p class="login"><%= current_user.description %></p>
+          
+        <% else %>
+          <%= link_to 'Entrar', new_user_session_url, class: "login" %>
+        <% end %>
+      </nav>
+    </header>
+    
     <div>
       <%= notice  %>
       <%= alert %>
