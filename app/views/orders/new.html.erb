@@ -1,6 +1,13 @@
 <h2>Registrar pedido</h2>
 
+<div>
+  <% if @order.errors.any? %>
+    <% @order.errors.each do |e| %>
+      <%= e.full_message %>
+    <% end %>
+  <% end %>
 
+</div>
 <%= form_with(model: @order) do |f| %>
   <div>
     <%= f.label :warehouse_id %>
