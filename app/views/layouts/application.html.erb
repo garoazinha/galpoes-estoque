@@ -20,16 +20,17 @@
         <%= link_to 'Modelos de Produtos', product_models_path, class: "botao" %>
         <%= link_to 'Registrar Pedido', new_order_path %>
         <% if user_signed_in? %> 
-          <div class="querydiv">
+          
+        
           <%= form_with(url: search_orders_path, method: :get) do |f| %>
             <%= f.label :query, "Buscar Pedido" %>
             <%= f.text_field :query %>
             <%= f.submit "Buscar" %>
           <% end %>
-          </div>
-        
-          <%= button_to 'Sair', destroy_user_session_path, class: "login", method: :delete %>
+          
           <p class="login"><%= current_user.description %></p>
+          <%= button_to 'Sair', destroy_user_session_path, class: "login", method: :delete %>
+          
           
         <% else %>
           <%= link_to 'Entrar', new_user_session_url, class: "login" %>

@@ -1,7 +1,4 @@
-.querydiv {
-    padding: 10px;
 
-}
 header {
     padding: 20px;
     background-color: lightgray;
@@ -11,6 +8,7 @@ nav {
     background-color: lightcyan;
     overflow: hidden;
     display: flex;
+   
 
     
 }
@@ -48,7 +46,7 @@ a.login {
 }
 
 button.login {
-    float: right;
+    
     background-color: green;
     color:white;
     padding: 15px 10px; 

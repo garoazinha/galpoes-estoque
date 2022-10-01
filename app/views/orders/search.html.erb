@@ -1,21 +1,21 @@
 <h2>Resultados da Busca por: <%= @code %> </h2>
 
-<% if @order.present? %>
-  <p>1 pedido encontrado</p>
-  <div>
-  <dl>
-    <dt><%= Order.human_attribute_name(:code) %>:</dt>
-    <dd><%= @order.code %></dd>
-    <dt><%= Order.human_attribute_name(:user_id) %>:</dt>
-    <dd><%= @order.user.description %></dd>
-    <dt><%= Order.human_attribute_name(:warehouse_id) %>:</dt>
-    <dd><%= @order.warehouse.full_description %></dd>
-    <dt><%= Order.human_attribute_name(:supplier_id) %>:</dt>
-    <dd><%= @order.supplier.full_description %></dd>
-    <dt><%= Order.human_attribute_name(:estimated_delivery_date) %>:</dt>
-    <dd><%= I18n.localize(@order.estimated_delivery_date) %></dd>
-  
-  
-  </dl>
+
+<p><%= @orders.count %> <%= Order.model_name.human(count: @orders.count).downcase %> <%= t(:found, count: @orders.count) %></p>
+<div>
+  <% @orders.each do |order| %>
+    <dl>
+      <dt><%= Order.human_attribute_name(:code) %>:</dt>
+      <dd><%= order.code %></dd>
+      <dt><%= Order.human_attribute_name(:user_id) %>:</dt>
+      <dd><%= order.user.description %></dd>
+      <dt><%= Order.human_attribute_name(:warehouse_id) %>:</dt>
+      <dd><%= order.warehouse.full_description %></dd>
+      <dt><%= Order.human_attribute_name(:supplier_id) %>:</dt>
+      <dd><%= order.supplier.full_description %></dd>
+      <dt><%= Order.human_attribute_name(:estimated_delivery_date) %>:</dt>
+      <dd><%= I18n.localize(order.estimated_delivery_date) %></dd>
+    
+    </dl>
+  <% end %>
 </div>
-<% end %>

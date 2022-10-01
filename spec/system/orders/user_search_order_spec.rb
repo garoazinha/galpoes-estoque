@@ -53,4 +53,48 @@ describe 'Usuário busca pedido' do
     expect(page).to have_content("Fornecedor: Waystar Roy Group Inc - CNPJ: 56.478.345/2184-39")
 
   end
+  it 'e encontra vários pedidos' do
+    #arrange
+    user = User.create!(name:"Mari", email: "mari@mari.com", password: "password")
+  
+    first_warehouse = Warehouse.create!(name: 'Aeroporto SP', code: 'GRU', city: 'Guarulhos', state: 'SP',
+                                area: 100_000, useful_area: 80_000,
+                                address: 'Avenida do Aeroporto, 1000', cep: '15000000', 
+                                description: 'Galpão destinado para cargas internacionais')
+    second_warehouse = Warehouse.create!(name: 'Galpão Rio', code: 'RIO', city: 'Rio de Janeiro', state: 'RJ',
+                                  area: 90_000, useful_area: 68_000,
+                                  address: 'Avenida da Manga, 999', cep: '75000000', 
+                                  description: 'Galpão destinado para cargas marítimas')
+    
+    supplier = Supplier.create!(corp_name: 'Waystar Roy Group Inc', brand_name: 'Waystar Roy',
+                                registration_id: '56478345218439', city: 'São Paulo', state: 'SP',
+                                full_address: 'Rodovia do Cacau, 300', email:'contato@waystar.com',
+                                phone: '3290906463')
+
+    allow(SecureRandom).to receive(:alphanumeric).with(8).and_return('GRU12345')
+    first_order = Order.create!(user: user, warehouse: first_warehouse,
+                          supplier: supplier, estimated_delivery_date: 4.days.from_now)
+
+    allow(SecureRandom).to receive(:alphanumeric).with(8).and_return('GRU67890')
+    second_order = Order.create!(user: user, warehouse: first_warehouse,
+                         supplier: supplier, estimated_delivery_date: 4.days.from_now)
+
+    allow(SecureRandom).to receive(:alphanumeric).with(8).and_return('SDU00000')
+    third_order = Order.create!(user: user, warehouse: second_warehouse,
+                          supplier: supplier, estimated_delivery_date: 4.days.from_now)
+    #act
+    login_as(user)
+    visit root_path
+    fill_in 'Buscar Pedido', with: 'GRU'
+    click_on 'Buscar'
+    #assert
+    expect(page).to have_content("Resultados da Busca por: GRU")
+    expect(page).to have_content("2 pedidos encontrados")
+    expect(page).to have_content("Código: GRU12345")
+    expect(page).to have_content("Código: GRU67890")
+    expect(page).not_to have_content("Código: SDU00000")
+    expect(page).to have_content("Galpão destino: GRU - Aeroporto SP")
+    expect(page).not_to have_content("Galpão destino: SDU - Galpão Rio")
+
+  end
 end
