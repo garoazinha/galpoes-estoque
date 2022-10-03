@@ -24,9 +24,9 @@ describe 'Usuário cadastra pedido' do
                                 address: 'Avenida do Aeroporto, 1000', cep: '15000000', 
                                 description: 'Galpão destinado para cargas internacionais')
     Supplier.create!(corp_name:'Lannister Brasil LTDA', brand_name: 'Lannister',
-                                  registration_id: '91827447385482', city: 'Rio de Janeiro',
-                                  state: 'RJ', full_address: 'Avenida Castelão. 423',
-                                  email: 'ouv@lannister.com', phone: '2637920382')
+                    registration_id: '91827447385482', city: 'Rio de Janeiro',
+                    state: 'RJ', full_address: 'Avenida Castelão. 423',
+                    email: 'ouv@lannister.com', phone: '2637920382')
     supplier = Supplier.create!(corp_name: 'Waystar Roy Group Inc', brand_name: 'Waystar Roy',
                                 registration_id: '56478345218439', city: 'São Paulo', state: 'SP',
                                 full_address: 'Rodovia do Cacau, 300', email:'contato@waystar.com',

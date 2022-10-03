@@ -1,23 +1,20 @@
+<h1>Detalhes do Pedido</h1>
 <h2><%= Order.model_name.human %> <%= @order.code %></h2>
 
 <div>
-  <table class = "order">
-    <tr>
-      <td class ="order-h"><%= Order.human_attribute_name(:user_id) %></td>
-      <td class ="order"><%= @order.user.description %></td>
-    </tr>
-    <tr>
-      <td class ="order-h"><%= Order.human_attribute_name(:warehouse_id) %></td>
-      <td class ="order"><%= @order.warehouse.full_description %></td>
-    </tr>
-    <tr>
-      <td class ="order-h"><%= Order.human_attribute_name(:supplier_id) %></td>
-      <td class ="order"><%= @order.supplier.full_description %></td>
-    </tr>
-    <tr>
-      <td class ="order-h"><%= Order.human_attribute_name(:estimated_delivery_date) %></td>
-      <td class ="order"><%= I18n.localize(@order.estimated_delivery_date) %></td>
-    </tr>
+  <dl>
+    <dt><%= Order.human_attribute_name(:code) %>:</dt>
+    <dd><%= @order.code %></dd>
+    <dt><%= Order.human_attribute_name(:user_id) %>:</dt>
+    <dd><%= @order.user.description %></dd>
+    <dt><%= Order.human_attribute_name(:warehouse_id) %>:</dt>
+    <dd><%= @order.warehouse.full_description %></dd>
+    <dt><%= Order.human_attribute_name(:supplier_id) %>:</dt>
+    <dd><%= @order.supplier.full_description %></dd>
+    <dt><%= Order.human_attribute_name(:estimated_delivery_date) %>:</dt>
+    <dd><%= I18n.localize(@order.estimated_delivery_date) %></dd>
   
-  </table>
+  </dl>
 </div>
+
+<%= link_to 'Editar', edit_order_path(@order.id) %>
