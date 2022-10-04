@@ -47,6 +47,7 @@ describe 'Usuário cadastra pedido' do
     expect(page).to have_content('GRU - Aeroporto SP')
     expect(page).to have_content('Waystar Roy Group Inc')
     expect(page).to have_content('Mariana - mari@mari.com')
+    expect(page).to have_content('Situação do pedido: Pendente')
     expect(page).to have_content('30/12/2022')
     expect(page).not_to have_content('Galpão Rio')
     expect(page).not_to have_content('Lannister Brasil LTDA')

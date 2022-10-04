@@ -24,13 +24,16 @@ describe 'Usuário vê seus próprios pedidos' do
                                 full_address: 'Rodovia do Cacau, 300', email:'contato@waystar.com',
                                 phone: '3290906463')
     first_order = Order.create!(user: user, warehouse: warehouse,
-                                  supplier: supplier, estimated_delivery_date: 4.days.from_now)
+                                supplier: supplier, estimated_delivery_date: 4.days.from_now,
+                                status: 'pending')
     
     second_order = Order.create!(user: second_user, warehouse: warehouse,
-                                    supplier: supplier, estimated_delivery_date: 4.days.from_now)
+                                  supplier: supplier, estimated_delivery_date: 4.days.from_now,
+                                  status: 'delivered')
 
     third_order = Order.create!(user: user, warehouse: warehouse,
-                              supplier: supplier, estimated_delivery_date: 4.days.from_now)
+                              supplier: supplier, estimated_delivery_date: 4.days.from_now,
+                              status: 'canceled')
     #Act
     login_as(user)
     visit root_path
@@ -38,8 +41,11 @@ describe 'Usuário vê seus próprios pedidos' do
 
     #Assert
     expect(page).to have_content(first_order.code)
+    expect(page).to have_content('Pendente')
     expect(page).not_to have_content(second_order.code)
+    expect(page).not_to have_content('Entregue')
     expect(page).to have_content(third_order.code)
+    expect(page).to have_content('Cancelado')
     
 
 
@@ -67,6 +73,7 @@ describe 'Usuário vê seus próprios pedidos' do
     #Assert
     expect(page).to have_content('Detalhes do Pedido')
     expect(page).to have_content(first_order.code)
+
     expect(page).to have_content("Galpão destino: GRU - Aeroporto SP")
     expect(page).to have_content("Fornecedor: Waystar Roy Group Inc")
     formatted_date = I18n.localize(4.days.from_now.to_date)

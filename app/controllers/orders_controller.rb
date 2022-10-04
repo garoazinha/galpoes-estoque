@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_action :set_order_and_check_user, only: [:show,:edit,:update]
+  before_action :set_order_and_check_user, only: [:show,:edit,:update,:delivered, :canceled]
 
 
   def index
@@ -28,7 +28,7 @@ class OrdersController < ApplicationController
 
   def show
 
-    set_order_and_check_user
+  
   end
 
   def search
@@ -39,13 +39,12 @@ class OrdersController < ApplicationController
 
   def edit
 
-    set_order_and_check_user
     @warehouses = Warehouse.all
     @suppliers = Supplier.all
   end
 
   def update
-    set_order_and_check_user
+
     order_params = params.require(:order).permit(:supplier_id, :warehouse_id, :estimated_delivery_date)
     if @order.update(order_params)
       redirect_to order_path(@order.id), notice: 'Pedido atualizado com sucesso'
@@ -57,6 +56,20 @@ class OrdersController < ApplicationController
 
 
   end
+
+  def delivered
+
+    @order.delivered!
+    redirect_to @order
+  end
+
+  def canceled
+
+    @order.canceled!
+    redirect_to @order
+  end
+
+  private
 
   def set_order_and_check_user
     @order = Order.find(params[:id])
