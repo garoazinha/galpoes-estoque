@@ -18,6 +18,17 @@
   
   </dl>
 </div>
+ 
+<h2>Itens do Pedido</h2>
+<%= link_to 'Adicionar Item', new_order_order_item_path(order_id: @order.id) %>
+<table>
+  <% @order.order_items.each do |item| %>
+    <tr>
+      <%= item.quantity %> x <%= item.product_model.name %>
+    </tr>
+  <% end %>
+</table>
+
 
 <%= link_to 'Editar', edit_order_path(@order.id) %>
 <% if @order.pending? %>

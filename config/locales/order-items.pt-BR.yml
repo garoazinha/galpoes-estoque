@@ -1,0 +1,17 @@
+pt-BR:
+  activerecord:
+    models:
+      order_item:
+        one: Item de pedido
+        other: Itens de pedido
+    attributes:
+      order_item:
+        product_model_id:
+          one: Produto
+          other: Produtos
+        warehouse_id: Galpão destino
+        warehouse: Galpão destino
+        supplier_id: Fornecedor
+        supplier: Fornecedor
+        quantity: Quantidade
+        
