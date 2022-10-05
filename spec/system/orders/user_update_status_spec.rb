@@ -12,9 +12,12 @@ describe 'Usuário atualiza status' do
                                 registration_id: '56478345218439', city: 'São Paulo', state: 'SP',
                                 full_address: 'Rodovia do Cacau, 300', email:'contato@waystar.com',
                                 phone: '3290906463')
+    product = ProductModel.new(name: 'Produto A', sku: 'PRODA-TESTEDEL-12345', weight: 100, width: 100,
+                              height: 20, depth: 12, supplier: supplier)
     order = Order.create!(user: user, warehouse: warehouse,
-                                supplier: supplier, estimated_delivery_date: 4.days.from_now,
-                                status: :pending )
+                          supplier: supplier, estimated_delivery_date: 4.days.from_now,
+                          status: :pending )
+    OrderItem.create!(order: order, product_model: product, quantity: 5)
     #Act
     login_as(user)
     visit root_path
@@ -25,6 +28,9 @@ describe 'Usuário atualiza status' do
     expect(current_path).to eq(order_path(order.id))
     expect(page).to have_content("Situação do pedido: Entregue")
     expect(page).not_to have_button('Marcar como ENTREGUE')
+    expect(StockProduct.count).to eq 5
+    estoque = StockProduct.where(product_model: product, warehouse: warehouse).count
+    expect(estoque).to eq 5
 
   end
 
@@ -42,6 +48,7 @@ describe 'Usuário atualiza status' do
     order = Order.create!(user: user, warehouse: warehouse,
                                 supplier: supplier, estimated_delivery_date: 4.days.from_now,
                                 status: :pending )
+    OrderItem.create!(order: order, product_model: product, quantity: 5)
     #Act
     login_as(user)
     visit root_path
@@ -52,6 +59,7 @@ describe 'Usuário atualiza status' do
     expect(current_path).to eq(order_path(order.id))
     expect(page).to have_content("Situação do pedido: Cancelado")
     expect(page).not_to have_button('Marcar como CANCELADO')
+    expect(StockProduct.count).to eq(0)
     
   end
 end
