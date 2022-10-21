@@ -45,6 +45,8 @@ describe 'Usuário atualiza status' do
                                 registration_id: '56478345218439', city: 'São Paulo', state: 'SP',
                                 full_address: 'Rodovia do Cacau, 300', email:'contato@waystar.com',
                                 phone: '3290906463')
+    product = ProductModel.new(name: 'Produto A', sku: 'PRODA-TESTEDEL-12345', weight: 100, width: 100,
+                                  height: 20, depth: 12, supplier: supplier)
     order = Order.create!(user: user, warehouse: warehouse,
                                 supplier: supplier, estimated_delivery_date: 4.days.from_now,
                                 status: :pending )

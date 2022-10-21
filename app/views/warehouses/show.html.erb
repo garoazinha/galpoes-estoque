@@ -1,6 +1,8 @@
 <h2> Galpão <%= @warehouse.code %> </h2>
 <%= link_to 'Editar', edit_warehouse_path(@warehouse.id) %>
 <%= button_to('Remover', warehouse_path(@warehouse.id), method: :delete) %>
+
+<%= link_to("Voltar", root_path ) %>
 <h3> <%= @warehouse.description %> </h3>
 <div>
   <dl>
@@ -23,4 +25,31 @@
 
 </div>
 
-<%= link_to("Voltar", root_path ) %>
+
+<div class="stock_destination">
+<h3>Saída de estoque</h3>
+  <%= form_with(url: warehouse_stock_product_destinations_path(@warehouse.id)) do |f| %>
+    <div>
+    <%= f.label(:product_model_id, 'Item para saída') %>
+    <%= f.collection_select(:product_model_id, @product_model, :id, :sku) %>
+    </div>
+    <div>
+    <%= f.label(:recipient, 'Destinatário') %>
+    <%= f.text_field :recipient %>
+    </div>
+    <div>
+    <%= f.label(:address, 'Endereço destino') %>
+    <%= f.text_field :address %>
+    </div>
+    <%= f.submit 'Confirmar' %>
+  <% end %></div>
+</div>
+
+
+<div>
+  <h3>Itens em estoque</h3>
+
+  <% @stock.each_pair do |p, n| %>
+  <%= n %> x <%= p.sku %>
+  <% end %>
+</div>

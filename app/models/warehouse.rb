@@ -1,5 +1,5 @@
 class Warehouse < ApplicationRecord
-    
+    has_many :stock_products
     validates :name, :city, :code, :area, :state, :useful_area, :description, :cep, :address, presence: true
     validates :code, :name, uniqueness:true
    

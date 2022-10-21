@@ -8,7 +8,7 @@ class Order < ApplicationRecord
   enum status: {pending: 0, delivered: 5, canceled: 9}
 
 
-  before_validation :generate_code
+  before_validation :generate_code, on: :create
   validates :code, :estimated_delivery_date, presence: true
   validate :estimated_delivery_date_is_future
 

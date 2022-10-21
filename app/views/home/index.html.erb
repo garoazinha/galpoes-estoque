@@ -1,14 +1,15 @@
 
-
+<div class="prose lg:prose-x">
 <h1> Galpões </h1>
 
 <div>
   <%= link_to("Cadastrar galpão", new_warehouse_path)  %>
 </div>
+
 <% @warehouses.each do |w| %>
   <div>
     <h3><%= link_to(w.name, warehouse_path(w.id)) %></h3>
-    <dl>
+    <dl role="list">
       <dt>Código: </dt>
       <dd><%= w.code %></dd>
       <dt>Cidade: </dt>
@@ -24,4 +25,4 @@
 <% if @warehouses.empty? %>
   <p> Não existem galpões cadastrados </p>
 <% end %>
-
+</div>

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
 
     <%= stylesheet_link_tag "application" %>
     <%= javascript_importmap_tags %>
@@ -26,7 +27,7 @@
           <%= form_with(url: search_orders_path, method: :get) do |f| %>
             <%= f.label :query, "Buscar Pedido" %>
             <%= f.text_field :query %>
-            <%= f.submit "Buscar" %>
+            <%= f.submit "Buscar", class: "text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2" %>
           <% end %>
           
           <p class="login"><%= current_user.description %></p>
@@ -43,7 +44,7 @@
       <%= notice  %>
       <%= alert %>
     </div>
-    <main>
+    <main class="prose lg:prose-x">
       <%= yield %>
     </main>
   </body>
